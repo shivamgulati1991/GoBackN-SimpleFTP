@@ -1,3 +1,7 @@
+/*
+ * References taken from StackOverflow community for socket connections, 
+ * FTP concepts, checksum computation
+ */
 package proj_ftp;
 
 import java.io.BufferedInputStream;

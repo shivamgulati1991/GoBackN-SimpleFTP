@@ -31,18 +31,9 @@ public class CustomUtil {
 	    public static int binaryToDecimal(String str)
 	    {
 	    	return Integer.parseInt(str, 2);
-	        /*double j=0;
-	        for(int i=0;i<str.length();i++)
-	        {
-	            if(str.charAt(i)== '1')
-	            {
-	                j=j+ Math.pow(2,str.length()-1-i);
-	            }
-	        }
-	        return (int) j;*/
 	    }
 	    
-	    public static int binaryToDecimalByte(byte [] st,int n){
+	    public static int binaryToDecimalByte(byte [] st){
 	    	String str=new String(Arrays.copyOfRange(st, 0, 32)); 
 	        double j=0;
 	        for(int i=0;i<str.length();i++){
