@@ -80,7 +80,7 @@ public class Client {
 		long endTimer=System.currentTimeMillis();
 		
 		//Display the delay to console
-		System.out.println("Tranfer delay time in milliseconds: "+(endTimer-startTimer));
+		System.out.println("Delay time in milliseconds: "+(endTimer-startTimer));
 		
 		System.out.println("File has been sent to the server.");
 	}
@@ -155,10 +155,10 @@ public class Client {
                 while(isFinished==false)
                 {
                 	sockClient.receive(recPacket);
-                    String unpack=new String(recPacket.getData());
-                    if(unpack.substring(48,64).equals("1010101010101010"))
+                    String getPacketBack=new String(recPacket.getData());
+                    if(getPacketBack.substring(48,64).equals("1010101010101010"))
                     {
-                        String seqtemp=unpack.substring(0,32);
+                        String seqtemp=getPacketBack.substring(0,32);
                         int seqNum=CustomUtil.binaryToDecimal(seqtemp);
                         ack=seqNum;
                         //check if acknowledgement and count are same to see if all packets sent
@@ -168,15 +168,11 @@ public class Client {
                             count=ack;
                             buffer=0;
                             break;
-                        }
-                    }
-                }
-            }
+                        }}}}
             catch(SocketTimeoutException sto)
             {
-                System.out.println("Timeout, sequence number= "+ack);
-                buffer=count-ack;
-                count=ack;
+                System.out.println("Timeout, Sequence number: "+ack);
+                buffer=count-ack; count=ack;
             }
             catch(IOException ioe)
             {
@@ -188,12 +184,16 @@ public class Client {
         try
         {        	
            String temp=Integer.toBinaryString(count);
-            for(int i=temp.length();i<32;i++)
-                temp="0"+temp;
+           int i=temp.length();
+           while(i<32){
+        	   temp="0"+temp;
+        	   i++;
+           }
+
             byte b[]=new byte[mss];
             String check=CustomUtil.getChecksum(b);
-            String eof=temp+check+"0000000000000000"+(new String(b));
-            byte b1[]=eof.getBytes();
+            String endFile=temp+check+"0000000000000000"+(new String(b));
+            byte b1[]=endFile.getBytes();
             DatagramPacket p=new DatagramPacket(b1,b1.length,ipAddr,7735);
             sockClient.send(p);
         }

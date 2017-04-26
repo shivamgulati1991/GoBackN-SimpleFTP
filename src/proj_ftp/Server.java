@@ -79,7 +79,7 @@ public class Server {
               rand=rs.nextFloat();
               if(rand<=prob)
               {
-                  System.out.println("Packet loss, Sequence number= " + seqno);
+                  System.out.println("Packet loss, Sequence number: " + seqno);
                   continue;
               }
               //get IP and port
