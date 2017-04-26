@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 
-public class FtpClient {
+public class Client {
 	String hostname="";
 	int port,n,mss;
 	int ack=0;
@@ -13,7 +13,7 @@ public class FtpClient {
 	InetAddress ipAddr;
 	byte[] data="helloworld1234".getBytes();
 	DatagramSocket sockClient;
-	FtpClient(String hostName, int serverPort,String fileName, int N,int MSS){
+	Client(String hostName, int serverPort,String fileName, int N,int MSS){
 		hostname=hostName;
 		port=serverPort;
 		n=N;
@@ -39,7 +39,7 @@ public class FtpClient {
 	}
 	
 	public static void main(String[] args){
-		FtpClient newClient= new FtpClient(args[0],Integer.parseInt(args[1]),args[2],Integer.parseInt(args[3]),Integer.parseInt(args[4]));
+		Client newClient= new Client(args[0],Integer.parseInt(args[1]),args[2],Integer.parseInt(args[3]),Integer.parseInt(args[4]));
 		
 	}
 }
