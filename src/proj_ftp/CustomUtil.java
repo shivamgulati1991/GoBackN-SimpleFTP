@@ -13,19 +13,24 @@ public class CustomUtil {
 	   
 	    public static String getChecksum(byte [] b)
 	    {
-	       byte sum1=0,sum2=0;
+	       byte x1=0,x2=0;
 	       for(int i=0;i<b.length;i=i+2)
 	       {
-	           sum1+=b[i];
-	          if((i+1)<b.length)
-	            sum2+=b[i+1];
+	           x1+=b[i];
+	           if((i+1)<b.length)
+	           {
+	        	   x2+=b[i+1];
+	           }
 	       }
-	       String res=Byte.toString(sum1),res1=Byte.toString(sum2);
-	       for(int i=res.length();i<8;i++)
-	           res="0"+res;
-	       for(int i=res1.length();i<8;i++)
-	           res1="0"+res1;
-	       return res+res1;
+	       String result=Byte.toString(x1),result1=Byte.toString(x2);
+	       for(int i=result.length();i<8;i++){
+	    	   result="0"+result;
+	       }
+	           
+	       for(int i=result1.length();i<8;i++){
+	    	   result1="0"+result1;
+	       }
+	       return result+result1;
 	    }
 	    
 	    public static int binaryToDecimal(String str)
