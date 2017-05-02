@@ -52,14 +52,17 @@ and processed according to the Go-back-N rules.
 
 ### To Run
 
-Command Line Arguments
 The Simple-FTP server must be invoked as follows:
+
 Simple_ftp_server port# file-name p
+
 where port# is the port number to which the server is listening (for this project, this port number is always 7735),
 file-name is the name of the file where the data will be written, and p is the packet loss probability discussed
 above.
 The Simple-FTP client must be invoked as follows:
+
 Simple_ftp_server server-host-name server-port# file-name N MSS
+
 where server-host-name is the host name where the server runs, server-port# is the port number of the server
 (i.e., 7735), file-name is the name of the file to be transferred, N is the window size, and MSS is the maximum
 segment size.
